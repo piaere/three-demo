@@ -3,13 +3,143 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
   </head>
   <body>
     <div id="app"></div>
     <canvas id="bg"></canvas>
-    <script type="module" src="/main.js"></script>
+    <main>
+      <header>
+        <h1>The Merge</h1>
+        <p>
+          <a href="https://ethereum.org/en/">Ethereum</a> is transitioning to
+          Proof Of Stake
+        </p>
+      </header>
 
+      <blockquote>
+        <p>
+          Soon, the current Ethereum Mainnet will merge with the Beacon Chain
+          proof-of-stake system.
+        </p>
+      </blockquote>
+
+      <section>
+        <p>
+          This will mark the end of proof-of-work for Ethereum, and the full
+          transition to proof-of-stake.
+        </p>
+
+        <p>
+          This sets the stage for future scaling upgrades including sharding.
+        </p>
+
+        <p>The Merge will reduce Ethereum's energy consumption by ~99.95%.</p>
+      </section>
+
+      <section class="light">
+        <p>WHEN'S IT SHIPPING?</p>
+        <h1>~Q3/Q4 2022</h1>
+        <h3>
+          The Merge is the most significant upgrade in the history of Ethereum.
+          Extensive testing and bug bounties were undertaken to ensure a safe
+          transition to proof-of-stake.
+        </h3>
+
+        <p>
+          This process is in its final stages, with plans to undergo The Merge
+          on a few public testnets before finally moving forward with Mainnet.
+          If you're excited about The Merge, follow the
+          <a href="https://blog.ethereum.org/"> EF Blog</a> or the client
+          communication channels for the latest official word on When Merge?
+        </p>
+
+        <h2>What is The Merge?</h2>
+
+        <p>
+          The Merge represents the joining of the existing execution layer of
+          Ethereum (the Mainnet we use today) with its new proof-of-stake
+          consensus layer, the Beacon Chain. It eliminates the need for
+          energy-intensive mining and instead secures the network using staked
+          ETH. A truly exciting step in realizing the Ethereum vision – more
+          scalability, security, and sustainability.
+        </p>
+
+        <p>
+          It's important to remember that initially, the Beacon Chain shipped
+          separately from Mainnet. Ethereum Mainnet - with all it's accounts,
+          balances, smart contracts, and blockchain state - continues to be
+          secured by proof-of-work, even while the Beacon Chain runs in parallel
+          using proof-of-stake. The approaching Merge is when these two systems
+          finally come together, and proof-of-work is replaced permanently by
+          proof-of-stake.
+        </p>
+        <p>
+          Let's consider an analogy. Imagine Ethereum is a spaceship that isn't
+          quite ready for an interstellar voyage. With the Beacon Chain, the
+          community has built a new engine and a hardened hull. After
+          significant testing, it's almost time to hot-swap the new engine for
+          the old mid-flight. This will merge the new, more efficient engine
+          into the existing ship, ready to put in some serious lightyears and
+          take on the universe.
+        </p>
+      </section>
+
+      <section class="left">
+        <h2>Merging with Mainnet</h2>
+
+        <p>
+          Since genesis, proof-of-work has secured Mainnet. This is the Ethereum
+          blockchain we're all used to—it contains every transaction, smart
+          contract, and balance since it began in July 2015.
+        </p>
+
+        <p>
+          Throughout Ethereum's history, developers have been hard at work
+          preparing for an eventual transition away from proof-of-work to
+          proof-of-stake. On December 1, 2020, the Beacon Chain was created,
+          which has since existed as a separate blockchain to Mainnet, running
+          in parallel.
+        </p>
+
+        <p>
+          The Beacon Chain has not been processing Mainnet transactions.
+          Instead, it has been reaching consensus on its own state by agreeing
+          on active validators and their account balances. After extensive
+          testing, the Beacon Chain's time to reach consensus on more is rapidly
+          approaching. After The Merge, the Beacon Chain will be the consensus
+          engine for all network data, including execution layer transactions
+          and account balances.
+        </p>
+
+        <p>
+          The Merge represents the official switch to using the Beacon Chain as
+          the engine of block production. Mining will no longer be the means of
+          producing valid blocks. Instead, the proof-of-stake validators assume
+          this role and will be responsible for processing the validity of all
+          transactions and proposing blocks.
+        </p>
+        <p>
+          No history is lost. As Mainnet gets merged with the Beacon Chain, it
+          will also merge the entire transactional history of Ethereum. You
+          don't need to do anything. Your funds are safe.
+        </p>
+      </section>
+
+      <blockquote>
+        <p>
+          Learn more about
+          <a href="https://ethereum.org/en/upgrades/merge/">after the merge</a>
+        </p>
+      </blockquote>
+    </main>
+    <script type="module" src="/main.js"></script>
   </body>
 </html>
