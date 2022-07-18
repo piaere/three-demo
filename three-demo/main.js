@@ -2,8 +2,6 @@ import "./style.css";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
-import { WireframeGeometry } from "three";
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
@@ -20,13 +18,14 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 
+//Eth logo
 let ethLogoMesh;
 const loader = new GLTFLoader();
 loader.load("models/ethLogo.gltf", (gltf) => {
   ethLogoMesh = gltf.scene;
 
-ethLogoMesh.position.set(1.5,-0.2,-3.5)
-ethLogoMesh.scale.set(0.6,1,0.5)
+  ethLogoMesh.position.set(1.5, -0.2, -3.5);
+  ethLogoMesh.scale.set(0.6, 1, 0.5);
 
   let g = ethLogoMesh.children[0].geometry;
   let m = ethLogoMesh.children[0].material;
@@ -43,14 +42,7 @@ ethLogoMesh.scale.set(0.6,1,0.5)
   scene.add(ethLogoMesh);
 });
 
-//Eth logo
-const geometry = new THREE.OctahedronGeometry(1, 0, 0);
-const material = new THREE.MeshStandardMaterial({ color: 0x9900ff });
-const octaHedron = new THREE.Mesh(geometry, material);
-// scene.add(octaHedron);
-octaHedron.position.set(1, 0, 1);
-
-
+//Polyhedron
 const verticesOfCube = [
   -0, -1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, -1, 1, 1, 1, 1, -1,
   1, 1,
@@ -72,38 +64,25 @@ const material2 = new THREE.MeshStandardMaterial({
   wireframe: true,
 });
 const polyHedron = new THREE.Mesh(geometry2, material2);
-polyHedron.scale.set(3,3,3)
+polyHedron.scale.set(3, 3, 3);
 
 scene.add(polyHedron);
 
-//Moon
-const moonTexture = new THREE.TextureLoader().load("moon.png");
-const normalTexture = new THREE.TextureLoader().load("moon-texture.jpeg");
-const moon = new THREE.Mesh(
+//Neptune
+const neptuneTexture = new THREE.TextureLoader().load("./images/neptune.jpeg");
+
+const neptune = new THREE.Mesh(
   new THREE.SphereGeometry(4, 64, 64),
   new THREE.MeshStandardMaterial({
-    map: moonTexture,
-    normalTexture: normalTexture,
+    map: neptuneTexture,
   })
 );
-scene.add(moon);
-moon.position.set(-9, 1, 300);
+scene.add(neptune);
+neptune.position.set(-9, 1, 300);
 
-//Light
-const pointLight = new THREE.PointLight(0xffffff);
-pointLight.position.set(1, 1, 1);
-const ambientLight = new THREE.AmbientLight(0xffffff);
-scene.add(pointLight, ambientLight);
-
-//Helpers
-// const lightHelper = new THREE.PointLightHelper(pointLight);
-// const gridHelper = new THREE.GridHelper(20, 50);
-// scene.add(lightHelper, gridHelper);
-
-const controls = new OrbitControls(camera, renderer.domElement);
-
+//Stars
 function addStar() {
-  const geometry = new THREE.SphereGeometry(0.25, 50, 50  );
+  const geometry = new THREE.SphereGeometry(0.25, 50, 50);
   const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
   const star = new THREE.Mesh(geometry, material);
 
@@ -120,41 +99,58 @@ Array(500).fill().forEach(addStar);
 const spaceTexture = new THREE.TextureLoader().load("space-bg.avif");
 scene.background = spaceTexture;
 
+//My picture
+const piaereTexture = new THREE.TextureLoader().load(["./images/piaere.jpeg"]);
+const geometry = new THREE.PlaneGeometry(1, 1.25);
+const material = new THREE.MeshStandardMaterial({
+  map: piaereTexture,
+  side: THREE.DoubleSide,
+});
+
+const piaere = new THREE.Mesh(geometry, material);
+scene.add(piaere);
+piaere.position.set(-0, 1, 394);
+piaere.scale.set(0.8, 0.8);
+piaere.rotation.x = 0.2;
+piaere.rotation.y = 0.5;
+piaere.rotation.z = -0.1;
+
+//Light
+const pointLight = new THREE.PointLight(0xffffff);
+pointLight.position.set(1, 1, 1);
+const ambientLight = new THREE.AmbientLight(0xffffff);
+scene.add(pointLight, ambientLight);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+
+// Move camera on scroll
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top;
-  // moon.rotation.x += 0.05;
-  // moon.rotation.y += 0.075;
-  // moon.rotation.z += 0.05;
-
-  // jeff.rotation.y += 0.01;
-  // jeff.rotation.z += 0.01;
 
   camera.position.z = t * -0.09;
   camera.position.x = t * -0.0002;
   camera.rotation.y = t * -0.00025;
   camera.rotation.x = t * -0.00012;
-  
 }
-
 document.body.onscroll = moveCamera;
 moveCamera();
 
+//Animation
 function animate() {
   requestAnimationFrame(animate);
 
-  
+  piaere.rotation.y -= 0.01;
 
-  // octaHedron.rotation.x += 0.0005;
-  // octaHedron.rotation.z -= 0.0005;
   ethLogoMesh.rotation.y += 0.007;
+
   polyHedron.rotation.x += 0.001;
   polyHedron.rotation.y += 0.0005;
   polyHedron.rotation.z += 0.0005;
 
-  moon.rotation.x -= 0.0005;
-  moon.rotation.z += 0.0005;
-  moon.rotation.y -= 0.007;
-  // controls.update();
+  neptune.rotation.x -= 0.0005;
+  neptune.rotation.z += 0.0005;
+  neptune.rotation.y -= 0.007;
+
   renderer.render(scene, camera);
 }
 

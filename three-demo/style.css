@@ -23,7 +23,7 @@ main {
   position: absolute;
   width: 100%;
   margin: 0px auto;
-  padding: 120px 0px;
+  padding: 120px 0px 45px;
 
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -77,13 +77,22 @@ blockquote {
   grid-column: 2 / span 9;
   margin-bottom: var(--spacing);
 }
+blockquote:last-child {
+  color: #ff0000;
+  margin-bottom: 120px;
+}
 
 blockquote p {
-  /* color: black; */
-  /* background-color: white; */
   font-size: 3rem;
   display: inline;
   line-height: 1;
+}
+
+footer{
+  
+  grid-column: 9 / span 3;
+  padding-bottom:10px;
+
 }
 
 .left {
