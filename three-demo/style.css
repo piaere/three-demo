@@ -10,7 +10,8 @@ canvas {
   --dark-bg: rgba(15, 15, 15, 0.95);
   --spacing: 350px;
 
-  font-family: brandon-grotesque, sans-serif;
+  font-family: "Lato", sans-serif;
+
   font-weight: 400;
   font-style: normal;
 }
@@ -32,7 +33,6 @@ h1,
 h2,
 h3,
 blockquote {
-  font-family: "Lato", sans-serif;
 
   font-weight: 500;
   font-style: normal;
@@ -62,10 +62,13 @@ header {
 section {
   grid-column: 2 / 8;
   padding: 1rem;
-  background: var(--dark-bg);
+padding:  1em 2em ;
   font-size: 1.25rem;
   line-height: 1.5;
   margin-bottom: var(--spacing);
+  border: 1px solid white;
+  border-radius: 50px;
+
 }
 
 blockquote {

@@ -25,7 +25,7 @@ const loader = new GLTFLoader();
 loader.load("models/ethLogo.gltf", (gltf) => {
   ethLogoMesh = gltf.scene;
 
-ethLogoMesh.position.set(2,-0.2,-3)
+ethLogoMesh.position.set(1.5,-0.2,-3.5)
 ethLogoMesh.scale.set(0.6,1,0.5)
 
   let g = ethLogoMesh.children[0].geometry;
@@ -50,6 +50,7 @@ const octaHedron = new THREE.Mesh(geometry, material);
 // scene.add(octaHedron);
 octaHedron.position.set(1, 0, 1);
 
+
 const verticesOfCube = [
   -0, -1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, -1, 1, 1, 1, 1, -1,
   1, 1,
@@ -71,6 +72,7 @@ const material2 = new THREE.MeshStandardMaterial({
   wireframe: true,
 });
 const polyHedron = new THREE.Mesh(geometry2, material2);
+polyHedron.scale.set(3,3,3)
 
 scene.add(polyHedron);
 
@@ -85,7 +87,7 @@ const moon = new THREE.Mesh(
   })
 );
 scene.add(moon);
-moon.position.set(-6, 4, 45);
+moon.position.set(-9, 1, 300);
 
 //Light
 const pointLight = new THREE.PointLight(0xffffff);
@@ -101,7 +103,7 @@ scene.add(pointLight, ambientLight);
 const controls = new OrbitControls(camera, renderer.domElement);
 
 function addStar() {
-  const geometry = new THREE.SphereGeometry(0.25, 24, 24);
+  const geometry = new THREE.SphereGeometry(0.25, 50, 50  );
   const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
   const star = new THREE.Mesh(geometry, material);
 
@@ -113,7 +115,7 @@ function addStar() {
   scene.add(star);
 }
 
-Array(200).fill().forEach(addStar);
+Array(500).fill().forEach(addStar);
 
 const spaceTexture = new THREE.TextureLoader().load("space-bg.avif");
 scene.background = spaceTexture;
@@ -129,8 +131,8 @@ function moveCamera() {
 
   camera.position.z = t * -0.09;
   camera.position.x = t * -0.0002;
-  camera.rotation.y = t * -0.0005;
-  camera.rotation.x = t * -0.0005;
+  camera.rotation.y = t * -0.00025;
+  camera.rotation.x = t * -0.00012;
   
 }
 
